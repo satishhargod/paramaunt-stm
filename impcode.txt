@@ -1,0 +1,27 @@
+form color
+
+
+
+
+
+app-
+  pstm
+    ->admin
+        ->student
+            -edit
+              EditStudent
+            -list
+              studentList
+            -add
+              student add
+            page.js
+  api
+    ->admin
+        ->student 
+server-
+    ->contollers
+      ->student.controller.js
+    ->services
+      ->student.service.js
+    ->utils
+    ->middlewares

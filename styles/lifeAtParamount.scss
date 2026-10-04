@@ -1,0 +1,105 @@
+.life-paramount {
+    width: 100%;
+}
+
+.life-banner {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    cursor: pointer;
+
+   img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        animation: bannerZoom 9s ease-in-out infinite alternate;
+    }
+}
+@keyframes bannerZoom {
+
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.12);
+    }
+
+}
+/* title top left */
+
+.life-title {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 3;
+
+    h2 {
+        color: #fff;
+        font-size: 36px;
+        font-weight: 700;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, .5);
+    }
+}
+
+/* overlay */
+
+.life-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: .4s ease;
+}
+
+/* button */
+
+.view-all-btn {
+    padding: 14px 36px;
+    background: white;
+    color: #111;
+    font-weight: 600;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: .3s;
+
+    &:hover {
+        background: #973481;
+        color: white;
+    }
+}
+
+/* hover effects */
+.life-banner:hover img {
+    transform: scale(1.18);
+}
+
+.life-banner:hover .life-overlay {
+    opacity: 1;
+}
+
+@media (max-width:768px) {
+
+    .life-banner {
+        height: 55vh;
+    }
+
+    .life-title {
+        left: 20px;
+        top: 20px;
+
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    .view-all-btn {
+        padding: 12px 28px;
+    }
+
+}

@@ -1,0 +1,171 @@
+.eventsSection {
+    padding: 50px 0;
+    background: #f5f7fb;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.sectionHeader {
+
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 70px;
+
+}
+
+.sectionSubtitle {
+
+    font-size: 14px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #973481;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 8px;
+
+}
+
+.sectionTitle {
+
+    font-size: 42px;
+    font-weight: 700;
+    color: #1f2933;
+    margin: 12px 0;
+
+    span {
+        color: #973481;
+    }
+
+}
+
+.sectionDesc {
+
+    font-size: 18px;
+    line-height: 1.7;
+    color: #4b5563;
+
+}
+/* ================= GRID ================= */
+
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 👈 4 cards desktop
+  gap: 30px;
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr; // 👈 1 card mobile
+  }
+}
+
+/* ================= CARD ================= */
+
+.eventCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  transition: 0.4s;
+  display: flex;
+  flex-direction: column;
+
+  // ❌ REMOVE THIS
+  // width: 350px;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* ================= IMAGE ================= */
+
+.eventImg {
+  position: relative;
+
+  img {
+    width: 100%;          // ✅ important
+    height: 220px;        // consistent height
+    object-fit: cover;
+    display: block;
+  }
+
+  .timeBadge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #f59e0b;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+/* ================= CONTENT ================= */
+
+.eventContent {
+  padding: 20px;
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #666;
+  }
+}
+
+/* ================= DATE BADGE ================= */
+
+.dateBadge {
+  position: absolute;
+  top: -30px;
+  right: 20px;
+  background: #973481;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+
+  span {
+    font-size: 18px;
+  }
+
+  small {
+    font-size: 12px;
+  }
+}

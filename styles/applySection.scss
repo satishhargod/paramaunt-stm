@@ -1,0 +1,69 @@
+.apply-section {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+
+  background-image: url("/imgs/app.avif"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* dark overlay */
+
+.apply-overlay {
+  width: 100%;
+  height: 100%;
+//   background: linear-gradient(
+//     135deg,
+//     rgba(0,0,0,0.65),
+//     rgba(0,0,0,0.45)
+//   );
+background: linear-gradient(121deg, #00000046, #00000017);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* heading */
+
+.apply-overlay h2 {
+  color: white;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 30px;
+  max-width: 900px;
+}
+
+.apply-overlay span {
+  font-weight: 400;
+  font-size: 28px;
+  opacity: .9;
+}
+
+/* button */
+
+.apply-btn {
+  padding: 14px 38px;
+  background: #973481;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 40px;
+  transition: all .35s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,.25);
+}
+
+.apply-btn:hover {
+  background: #7b2b6a;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.35);
+}

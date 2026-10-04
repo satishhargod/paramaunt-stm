@@ -1,0 +1,161 @@
+// sidebar.scss — conflict-free, all classes prefixed with sb__
+
+$bg:         #1a2236;
+$width:      240px;
+$hover:      rgba(255, 255, 255, 0.07);
+$active-bg:  rgba(99, 179, 237, 0.15);
+$active-txt: #63b3ed;
+$text:       #cbd5e0;
+$muted:      #718096;
+$sub-bg:     rgba(0, 0, 0, 0.18);
+$r:          10px;
+
+// ── Sidebar shell ─────────────────────────────────────────────────────────────
+.sb {
+  width: $width;
+  min-height: 100vh;
+  background: $bg;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 32px;
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+// ── Logo ──────────────────────────────────────────────────────────────────────
+.sb__logo {
+  padding: 24px 20px 18px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 10px;
+}
+
+// ── Nav wrapper ───────────────────────────────────────────────────────────────
+.sb__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 10px;
+}
+
+// ── Group (parent + its submenu together) ─────────────────────────────────────
+.sb__group {
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Parent item — shared by Link and button ───────────────────────────────────
+.sb__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: $r;
+  border: none;
+  background: transparent;
+  color: $text;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+
+  // icon
+  i:first-child {
+    font-size: 15px;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+    color: $muted;
+    transition: color 0.18s;
+  }
+
+  // label
+  span {
+    flex: 1;
+    text-align: left;
+    line-height: 1;
+  }
+
+  &:hover {
+    background: $hover;
+    color: #fff;
+    i { color: #fff; }
+  }
+
+  &--active {
+    background: $active-bg;
+    color: $active-txt;
+    i { color: $active-txt; }
+  }
+
+  // remove default button styles
+  &--btn {
+    appearance: none;
+    -webkit-appearance: none;
+  }
+}
+
+// ── Chevron arrow ─────────────────────────────────────────────────────────────
+.sb__arrow {
+  font-size: 11px;
+  color: $muted;
+  margin-left: auto;
+  transition: transform 0.25s ease, color 0.18s;
+  flex-shrink: 0;
+
+  &--open {
+    transform: rotate(180deg);
+    color: $active-txt;
+  }
+}
+
+// ── Submenu container ─────────────────────────────────────────────────────────
+// max-height set via inline style in JSX → handles open/close animation
+.sb__sub {
+  overflow: hidden;
+  transition: max-height 0.28s ease;
+  background: $sub-bg;
+  border-radius: $r;
+  margin: 2px 0 4px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Submenu link ──────────────────────────────────────────────────────────────
+.sb__sub-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px 10px 38px;
+  font-size: 13px;
+  font-weight: 500;
+  color: $muted;
+  text-decoration: none;
+  border-radius: $r;
+  transition: background 0.15s, color 0.15s;
+  height: 44px; // matches JS calculation: children.length * 44px
+  box-sizing: border-box;
+
+  i {
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: $hover;
+    color: $text;
+  }
+
+  &--active {
+    color: $active-txt;
+    background: $active-bg;
+  }
+}

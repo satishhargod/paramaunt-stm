@@ -1,0 +1,247 @@
+$primary: #973481;
+$primary-dark: #7c2e6b;
+
+// ================= CONTAINER =================
+
+.modal-img-container {
+  width: 100%;
+  max-width: 520px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+
+  h2 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+// ================= TYPE TABS =================
+
+.type-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.tab-btn {
+  padding: 9px 18px;
+  border-radius: 10px;
+  border: 1.5px solid #d1d5db;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+
+  &.active {
+    background: $primary;
+    border-color: $primary;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(151, 52, 129, 0.25);
+  }
+}
+
+// ================= FORM GRID =================
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 20px;
+}
+
+// ================= FORM GROUP =================
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #374151;
+    line-height: 1;
+  }
+
+  input,
+  select {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 14px;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    font-size: 15px;
+    color: #111827;
+    outline: none;
+    transition: all 0.25s ease;
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 4px rgba(151, 52, 129, 0.12);
+    }
+  }
+  textarea{
+ color: #111827;
+  }
+}
+
+// ================= IMAGE =================
+
+.image-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 2px dashed #d1d5db;
+    background: #f9fafb;
+  }
+}
+
+.upload-btn {
+  padding: 11px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #4f8cff;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 140, 255, 0.3);
+  }
+}
+
+// ================= META =================
+
+.form-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.type-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: rgba(151, 52, 129, 0.1);
+  color: $primary;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.record-id {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+// ================= SUBMIT =================
+
+button[type="submit"] {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: $primary;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    background: $primary-dark;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(151, 52, 129, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// ================= LOADER =================
+
+.loader-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 0;
+
+  p {
+    font-size: 14px;
+    color: #9ca3af;
+  }
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e5e7eb;
+  border-top-color: $primary;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ================= MOBILE =================
+
+@media (max-width: 768px) {
+  .modal-img-container {
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .type-tabs {
+    gap: 8px;
+  }
+
+  .tab-btn {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}

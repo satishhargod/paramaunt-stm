@@ -1,0 +1,138 @@
+.testimonials {
+  padding: 30px 20px;
+  background: #f8fafc;
+}
+
+.testimonial-header {
+  text-align: center;
+  margin-bottom: 20px;
+
+  .sub-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2563eb;
+    letter-spacing: 1px;
+  }
+
+  h2 {
+    font-size: 34px;
+    margin: 10px 0;
+    font-weight: 700;
+  }
+
+  p {
+    color: #64748b;
+    max-width: 600px;
+    margin: auto;
+  }
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+}
+
+.testimonial-card {
+  position: relative;
+  padding: 25px;
+  border-radius: 16px;
+
+  /* transparent background */
+  background: rgba(255, 255, 255, 0.08);
+
+  /* glass blur */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+
+  transition: all .35s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+  }
+}
+.testimonial-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:16px;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,.35),
+    transparent 50%
+  );
+  opacity:.3;
+  pointer-events:none;
+}
+
+.testimonial-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+
+  img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+.testimonial-info h4{
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.testimonial-message{
+  font-size: 14px;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.rating{
+  color: #fbbf24;
+}
+
+@media (max-width: 992px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials {
+    padding: 60px 15px;
+  }
+
+  .testimonial-header h2 {
+    font-size: 26px;
+  }
+}
+
+.testimonial-card {
+  animation: fadeCard .6s ease;
+}
+
+@keyframes fadeCard {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

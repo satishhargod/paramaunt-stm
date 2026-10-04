@@ -1,0 +1,356 @@
+$primary: #973481;
+$primary-dark: #7c2e6b;
+
+.tc-page {
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.back-btn {
+  margin-bottom: 20px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #111827;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+// ================= HEADER =================
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 20px;
+
+  h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #111827;
+    margin: 0;
+  }
+}
+
+
+
+// ================= ADD FORM =================
+
+.add-tc-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px
+    rgba(15, 23, 42, 0.06);
+
+  h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+}
+
+// ================= GRID =================
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 22px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ================= FORM GROUP =================
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #374151;
+    line-height: 1;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 14px;
+    border: 1px solid #d1d5db;
+    background: #fff;
+    font-size: 15px;
+    color: #111827;
+    outline: none;
+    transition: all 0.25s ease;
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 4px
+        rgba(151, 52, 129, 0.12);
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    padding-top: 14px;
+    resize: vertical;
+  }
+}
+
+// ================= IMAGE =================
+
+.image-box {
+  // width: 240px;
+  border-radius: 0%;
+  img {
+    width: 500px !important;
+    height: 500px !important;
+   border-radius: 0% !important;
+    // height: 240px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 2px dashed #d1d5db;
+    background: #f9fafb;
+    margin-bottom: 14px;
+  }
+}
+
+.upload-btn {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #4f8cff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px
+      rgba(151, 52, 129, 0.25);
+  }
+}
+
+// ================= SUBMIT =================
+
+button[type="submit"] {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #4f8cff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    background: #3a73db;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+// ================= LIST TABLE =================
+
+.tc-list {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px
+    rgba(15, 23, 42, 0.06);
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    background: #f9fafb;
+    padding: 18px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #374151;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  td {
+    padding: 18px;
+    font-size: 14px;
+    color: #111827;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover {
+    background: #fafafa;
+  }
+}
+
+// ================= TABLE IMAGE =================
+
+.tc-thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+}
+
+// ================= ACTIONS =================
+
+.action-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.view-btn,
+.edit-btn,
+.delete-btn {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.view-btn {
+  background: #0ea5e9;
+}
+
+.edit-btn {
+  background: #2563eb;
+}
+
+.delete-btn {
+  background: #ef4444;
+}
+
+// ================= VIEW PAGE =================
+
+.view-card {
+  background: #fff;
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px
+    rgba(15, 23, 42, 0.06);
+}
+
+.view-image {
+  width: 320px;
+  height: 320px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 24px;
+}
+
+.view-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 15px;
+    color: #374151;
+    margin: 0;
+
+    strong {
+      color: #111827;
+    }
+  }
+}
+
+// ================= MOBILE =================
+
+@media (max-width: 768px) {
+  .tc-page {
+    padding: 16px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-box {
+    width: 100%;
+  }
+
+  .view-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .action-btns {
+    flex-wrap: wrap;
+  }
+
+  .tc-list {
+    overflow-x: auto;
+
+    table {
+      min-width: 700px;
+    }
+  }
+}

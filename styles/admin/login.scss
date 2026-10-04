@@ -1,0 +1,133 @@
+.admin-login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  background: url("/loginbg.jpg") no-repeat center center/cover;
+
+  .login-container {
+    width: 900px;
+    display: flex;
+
+    // ❌ REMOVE solid white
+    // background: #fff;
+
+    // ✅ MAKE GLASS BASE
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-radius: 16px;
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+    .left-section {
+      width: 50%;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      // ❌ REMOVE heavy color
+      // background: rgba(102, 126, 234, 0.25);
+
+      // ✅ VERY LIGHT GLASS TINT
+      background: rgba(255, 255, 255, 0.05);
+
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+      color: #365a74;
+
+      .logoimg {
+        width: 200px;
+        height: 200px;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 16px;
+        opacity: 0.9;
+      }
+    }
+
+    .right-section {
+      width: 50%;
+      padding: 40px;
+
+      background: rgba(255, 255, 255, 0.05);
+
+      form {
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+          margin-bottom: 20px;
+          color: #365a74; // 👈 change for dark bg
+        }
+
+        .input-group {
+          margin-bottom: 15px;
+
+          label {
+            color: #365a74;
+          }
+
+          input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px !important;
+            outline: none;
+
+            // ✅ GLASS INPUT
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #365a74;
+
+            &::placeholder {
+              color: #6a8699;
+            }
+
+            &:focus {
+              border-color: #667eea;
+              box-shadow: 0 0 10px rgba(102, 126, 234, 0.6);
+            }
+          }
+        }
+
+        button {
+          margin-top: 10px;
+          padding: 12px;
+          border-radius: 8px;
+          border: none;
+
+          background: #365a74;
+          color: #fff;
+          cursor: pointer;
+
+          &:hover {
+            background: #1e313f;
+          }
+        }
+
+        .forgot {
+          margin-top: 10px;
+          font-size: 13px;
+          color: #b2b5b8;
+          text-align: right;
+
+          &:hover {
+            color: #788086;
+          }
+        }
+      }
+    }
+  }
+}

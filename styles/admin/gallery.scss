@@ -1,0 +1,342 @@
+/* ===== Container ===== */
+.gallery-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+
+    h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    input,
+    select {
+        color: #444;
+    }
+
+   
+}
+
+/* ===== Tabs + Filters Wrapper ===== */
+.tabs {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+
+    /* Left side buttons */
+    button {
+        padding: 8px 18px;
+        border: none;
+        background: #f1f3f7;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: 0.3s;
+
+        &:hover {
+            background: #e2e6ef;
+            color: rgba(79, 140, 255, 0.3);
+        }
+
+        &.active {
+            background: #4f8cff;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(79, 140, 255, 0.3);
+        }
+    }
+    .add-btn{
+        background: #4f8cff;
+    }
+    /* Filters Right Side */
+    .filters {
+        display: flex;
+        gap: 10px;
+
+        select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #dcdfe6;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #444;
+
+            &:focus {
+                outline: none;
+                border-color: #4f8cff;
+            }
+        }
+
+         .add-btn {
+            padding: 8px 14px;
+            border: none;
+            background: #4f46e5;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    }
+}
+
+/* ===== Grid ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* ===== Card ===== */
+.card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    transition: 0.3s ease;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+    }
+
+    img,
+    iframe {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border: none;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 12px 12px 5px;
+    }
+
+    .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-top: 5px;
+
+  .type {
+    color: #555;
+    font-weight: 500;
+  }
+
+  .year {
+    color: #999;
+    font-weight: 600;
+  }
+}
+
+    p {
+        font-size: 13px;
+        color: #777;
+        margin: 0 12px 10px;
+    }
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 12px;
+        border-top: 1px solid #f0f0f0;
+
+        a {
+            font-size: 13px;
+            color: #4f8cff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        button {
+            border: none;
+            background: none;
+            color: #ff4d4f;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+    }
+}
+
+/* ===== Empty State ===== */
+.grid p {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #888;
+}
+
+/* ===== Responsive ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .tabs {
+        flex-direction: column;
+        align-items: stretch;
+
+        button {
+            width: 100%;
+        }
+
+        .filters {
+            width: 100%;
+            flex-direction: column;
+
+            select {
+                width: 100%;
+            }
+        }
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== Container ===== */
+.add-gallery-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #fff;
+  color: #444;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+}
+
+/* ===== Form ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  input,
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #dcdfe6;
+    font-size: 14px;
+    transition: 0.2s;
+     color: #444;
+
+    &:focus {
+      outline: none;
+      border-color: #4f8cff;
+      box-shadow: 0 0 0 2px rgba(79, 140, 255, 0.15);
+    }
+  }
+}
+
+/* ===== Image Upload Box ===== */
+.image-box {
+  border: 2px dashed #dcdfe6;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  transition: 0.3s;
+  background: #fafbff;
+
+  &:hover {
+    border-color: #4f8cff;
+    background: #f4f7ff;
+  }
+
+  img {
+    width: auto !important;
+    height: auto !important;
+    // max-height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-radius: 0px !important;
+  }
+
+  /* Upload Button */
+  .upload-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #4f8cff;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.25s;
+
+    &:hover {
+      background: #3a73db;
+    }
+  }
+}
+
+/* ===== Submit Button ===== */
+button[type="submit"] {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #4f8cff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s;
+
+  &:hover {
+    background: #3a73db;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .add-gallery-container {
+    margin: 20px;
+    padding: 20px;
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+}

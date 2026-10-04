@@ -1,0 +1,204 @@
+// facilities.module.scss
+
+// ─── Section Wrapper ──────────────────────────────────────────────────────────
+.facilitiesSection {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+// ─── Section Header ───────────────────────────────────────────────────────────
+.sectionHeader {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+
+.sectionSubtitle {
+  font-size: 14px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #973481;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.sectionTitle {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1f2933;
+  margin: 12px 0;
+
+  span {
+    color: #973481;
+  }
+}
+
+.sectionDesc {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+// ─── Shared image style ───────────────────────────────────────────────────────
+.galleryImg {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+// ─── Base gallery wrapper (shared overflow + radius) ─────────────────────────
+.gallery {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+// ─── 1 image: full width centered ────────────────────────────────────────────
+.gallerySingle {
+  display: flex;
+  justify-content: center;
+}
+
+.galleryHeroFull {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  height: 440px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    height: 260px;
+    max-width: 100%;
+  }
+}
+
+// ─── 2 images: side by side ───────────────────────────────────────────────────
+.galleryTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  height: 440px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+
+.galleryHalf {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 220px;
+  }
+}
+
+// ─── 3 images: 2 top + 1 centered bottom ─────────────────────────────────────
+.galleryThree {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.galleryThreeTop {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  height: 280px;
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
+
+  // reuse .galleryHalf inside here
+  .galleryHalf {
+    height: 100%;
+
+    @media (max-width: 768px) {
+      height: 200px;
+    }
+  }
+}
+
+.galleryThreeBottom {
+  display: flex;
+  justify-content: center;
+
+  .galleryHeroFull {
+    height: 320px;
+    max-width: 65%;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      height: 220px;
+    }
+  }
+}
+
+// ─── 4+ images: hero left + side grid right ───────────────────────────────────
+.galleryMany {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 14px;
+  height: 480px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+
+.galleryHero {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 260px;
+  }
+}
+
+.gallerySide {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    height: 160px;
+  }
+}
+
+.galleryThumb {
+  position: relative;
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    flex: 1;
+  }
+}
+
+// ─── Body Text ────────────────────────────────────────────────────────────────
+.sectionBody {
+  margin-top: 44px;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+
+  p {
+    font-size: 16px;
+    line-height: 1.85;
+    color: #374151;
+    text-align: center;
+  }
+}

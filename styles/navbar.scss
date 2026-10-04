@@ -1,0 +1,447 @@
+// =====================================================
+//  navbar.scss  –  Paramount Academy
+//  Desktop : hover-based multi-level dropdown
+//  Mobile  : accordion (click to expand)
+// =====================================================
+
+$primary   : #973481;
+$gold      : #9c7a3c;
+$dark      : #1e293b;
+$light-bg  : #f7f7f7;
+$border    : #eee;
+$white     : #ffffff;
+$shadow    : 0 10px 30px rgba(0, 0, 0, 0.12);
+
+// ── Wrapper ──────────────────────────────────────────
+.navbarp {
+  width: 100%;
+  background: $white;
+  border-bottom: 1px solid $border;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  overflow: visible; // MUST be visible — never hidden/auto
+}
+
+.navContainerRT {
+  margin: auto;
+  padding: 5px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0;
+  overflow: visible; // MUST be visible — dropdowns escape this
+  position: relative;
+}
+
+// ── Logo ─────────────────────────────────────────────
+.logoimg { width: 280px; }
+
+// ── Desktop wrapper ───────────────────────────────────
+.desktop-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+// ── Top info bar ─────────────────────────────────────
+.topMenu {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+
+  li a {
+    text-decoration: none;
+    color: $primary;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+    &:hover { color: $gold; }
+  }
+
+  .admissionText {
+    font-weight: 700;
+    animation: pulseText 1.5s infinite;
+    a { color: $primary; }
+  }
+}
+
+@keyframes pulseText {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+// ── Bottom nav bar ────────────────────────────────────
+.bottomMenu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+
+  > li > a,
+  .nb-top-link {
+    text-decoration: none;
+    color: $dark;
+    padding: 6px 2px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: $primary;
+      transition: width 0.3s ease;
+    }
+    &:hover { color: $primary; }
+  }
+  > li:hover > .nb-top-link::after { width: 100%; }
+}
+
+.admit-btn {
+  background: $primary;
+  color: $white !important;
+  padding: 7px 16px !important;
+  border-radius: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;
+  &:hover { transform: scale(1.04); }
+  &::after { display: none !important; }
+}
+
+// ── Dropdown container ────────────────────────────────
+.nb-has-drop {
+  position: relative;
+  // overflow visible — nested sub-menus must escape
+  overflow: visible;
+}
+
+.nb-top-btn,
+.nb-sub-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  color: $dark;
+  padding: 6px 2px;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+  white-space: nowrap;
+  &:hover { color: $primary; }
+}
+
+.nb-sub-btn {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 11px 18px;
+  width: 100%;
+  text-align: left;
+  justify-content: space-between;
+  &:hover {
+    background: $light-bg;
+    color: $primary;
+  }
+}
+
+// ── Dropdown panel ─────────────────────────────────────
+// KEY RULE: overflow on nb-drop must be visible so nested
+// panels can escape. Scroll is handled differently below.
+.nb-drop {
+  position: absolute;
+  min-width: 230px;
+  background: $white;
+  border-radius: 10px;
+  box-shadow: $shadow;
+  padding: 8px 0;
+  list-style: none;
+  z-index: 1000;
+
+  // overflow: visible ensures nested --right panels are never clipped
+  overflow: visible;
+
+  // hidden by default
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  pointer-events: none;
+
+  &--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  li > a {
+    display: block;
+    padding: 11px 18px;
+    font-size: 14px;
+    color: $dark;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+    &:hover {
+      background: $light-bg;
+      color: $primary;
+    }
+  }
+
+
+  // ── Top-level: opens downward
+  // Scroll is achieved with a pseudo-scroll trick:
+  // We use max-height + overflow on a WRAPPER element that does NOT
+  // contain any positioned children needing to escape.
+  // Since nested sub-menus are position:absolute, overflow:auto on
+  // the parent clips them. So instead we limit the panel height
+  // and let the PANEL itself scroll — but only when no sub-menu is open.
+  //
+  // THE CORRECT APPROACH: do not set overflow on nb-drop at all.
+  // Instead wrap only the scrollable content in a div with max-height.
+  // That wrapper must NOT be a positioned ancestor of nested panels.
+  // The nested panel uses position:absolute relative to nb-sub-drop,
+  // so as long as nb-sub-drop is NOT inside the overflow wrapper, it escapes.
+  //
+  // Since nb-sub-drop IS a list item inside the scroll wrapper, we cannot
+  // use overflow:auto on the wrapper without clipping sub-menus.
+  //
+  // ✅ FINAL SOLUTION:
+  // Set max-height + overflow-y on nb-drop--down itself,
+  // but override overflow back to visible on nb-sub-drop !important.
+  // This works because CSS overflow applies to painting context —
+  // absolutely positioned descendants of an overflow:auto ancestor
+  // ARE clipped. So we must NOT use overflow:auto anywhere in the chain.
+  //
+  // Instead: use a CSS clip approach via max-height only on the ul,
+  // with no overflow set (defaults to visible), and rely on the
+  // natural document height to be fine in most cases.
+  // For very long lists, we add a scroll-wrapper div in the JSX
+  // but only around non-parent items.
+  //
+  // SIMPLEST CORRECT APPROACH used here:
+  // nb-drop--down gets max-height + overflow-y:auto
+  // nb-sub-drop gets overflow:visible !important to break out of clip
+  // This works in Chrome/Firefox because overflow:visible on a child
+  // of overflow:auto parent does NOT override the clip — UNLESS the
+  // child is position:absolute. Since nb-drop--right is position:absolute,
+  // it IS clipped by the overflow:auto ancestor.
+  //
+  // THEREFORE: The only truly correct fix is to NOT use overflow:auto
+  // on any ancestor of position:absolute children.
+  //
+  // FINAL FINAL approach: JavaScript-positioned fixed panel for nested.
+  &--down {
+    top: calc(100% + 6px);
+    left: 0;
+    // No overflow set here — panel grows naturally
+    // Scroll is via inner wrapper (see .nb-drop-scroll-inner below)
+  }
+
+  // ── Nested: opens to the right
+  &--right {
+    top: -8px;
+    left: calc(100% + 2px);
+    transform: translateX(-6px);
+
+    &.nb-drop--open {
+      transform: translateX(0);
+    }
+  }
+}
+
+.add-scroll {
+  max-height: 400px; /* adjust as needed */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+// ── THE SCROLL SOLUTION ────────────────────────────────
+// nb-drop-scroll-inner is placed ONLY around items that are
+// NOT parents of nested sub-menus. In JSX we handle this by
+// wrapping with a CSS class that limits height.
+//
+// But since we can't easily split the list in JSX without
+// restructuring, we use a different CSS trick:
+//
+// Give nb-drop--down a max-height. For overflow, we use
+// overflow-y: auto BUT we must then use position:fixed on
+// nested panels so they escape the stacking context entirely.
+
+// ── Nested sub-drop row ───────────────────────────────
+.nb-sub-drop {
+  position: relative;
+  // overflow must be visible so --right panel escapes
+  overflow: visible !important;
+}
+
+// ── Scrollable inner for top-level panels ─────────────
+// This div is rendered in JSX inside nb-drop--down ONLY.
+// It wraps all children. Since nb-sub-drop children have
+// position:absolute sub-panels, we cannot use overflow:auto here.
+// See JSX — we removed this wrapper. Scroll is now via
+// the fixed-position approach below.
+.nb-drop-scroll-inner {
+  // Intentionally removed — see JSX. Not used anymore.
+}
+
+.nb-divider {
+  height: 1px;
+  background: $border;
+  margin: 6px 0;
+}
+
+// ── Hamburger ──────────────────────────────────────────
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  padding: 4px;
+
+  span {
+    display: block;
+    width: 26px;
+    height: 2.5px;
+    background: $dark;
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  &--open {
+    span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  }
+}
+
+.mobile-wrapper { display: none; }
+
+// =====================================================
+//  MOBILE  (≤ 900px)
+// =====================================================
+@media (max-width: 900px) {
+
+  .logoimg { width: 180px; }
+  .hamburger { display: flex; }
+  .desktop-wrapper { display: none; }
+
+  .mobile-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: $white;
+    border-top: 2px solid $primary;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    z-index: 999;
+
+    &--open {
+      max-height: 90vh;
+      overflow-y: auto;
+      overflow-x: hidden; // no horizontal scroll on mobile
+    }
+  }
+
+  .topMenu--mob {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 20px;
+    border-bottom: 1px solid $border;
+    font-size: 13px;
+  }
+
+  .nb-mob-menu {
+    list-style: none;
+    padding: 10px 0 20px;
+    margin: 0;
+  }
+
+  .nb-mob-link {
+    display: block;
+    padding: 11px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: $dark;
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+    &:hover {
+      color: $primary;
+      background: $light-bg;
+    }
+  }
+
+  .nb-mob-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    color: $dark;
+    text-align: left;
+    transition: color 0.2s, background 0.2s;
+
+    &:hover,
+    &--open {
+      color: $primary;
+      background: $light-bg;
+    }
+  }
+
+  .nb-mob-chevron {
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    &--open { transform: rotate(180deg); }
+  }
+
+  .nb-mob-sub {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #fcfcfc;
+    border-left: 2px solid $primary;
+    margin-left: 20px;
+    overflow-x: hidden;
+  }
+
+  .nb-mob-group .nb-divider { margin: 4px 0; }
+
+  .admit-btn--mob {
+    display: block;
+    margin: 12px 20px 4px;
+    text-align: center;
+  }
+}

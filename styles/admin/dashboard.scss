@@ -1,0 +1,93 @@
+.dashboard {
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+
+        .card {
+            background: #efecec;
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 20px;
+            position: relative;
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.3s ease;
+            cursor: pointer;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            &:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+                border-color: rgba(102, 126, 234, 0.5);
+            }
+
+            .card-top {
+                display: flex;
+                justify-content: flex-end;
+
+                .icon {
+                    font-size: 28px;
+                    background: rgba(102, 126, 234, 0.15);
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+            }
+
+            .card-body {
+                margin-top: 20px;
+
+                h3 {
+                    font-size: 26px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                    color: #232222;
+                }
+
+                p {
+                    font-size: 18px;
+                    color: #232222;
+                }
+            }
+        }
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 1024px) {
+        .cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .cards {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .chart {
+        margin-top: 30px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px;
+        border-radius: 12px;
+
+        .dummy-chart {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+        }
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard .cards {
+        grid-template-columns: 1fr;
+    }
+}

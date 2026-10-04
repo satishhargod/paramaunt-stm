@@ -1,0 +1,29 @@
+Pas@1030779
+
+////
+
+Chnages - Apply Now to Enroll Now
+
+/////////
+Images Section
+
+Remove:
+
+Vehicle image
+
+Keep:
+
+Building image
+Library image
+Ground image
+
+Vehicle image ko Facilities page me move karna hai.
+
+
+////
+
+5. Dedicated Teachers Section
+
+Remove:
+
+"Our Dedicated Teachers" section completely.
